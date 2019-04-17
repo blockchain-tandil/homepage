@@ -2,9 +2,11 @@ language: node_js
 cache: npm
 jobs:
   include:
+    - stage: test
+      script: npm run tsc    
     - stage: deploy
       before_script: npm i -g now
-      script: now --target production --token=$NOW_TOKEN
+      script: npm run deploy:production
 stages:
   - test
   - name: deploy
