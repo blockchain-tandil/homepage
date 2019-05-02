@@ -11,7 +11,7 @@ const IndexPage: React.FunctionComponent = () => {
   return (
     <MainLayout title="Blockchain Tandil">
       <Grid container direction="column">
-        <BlokchainTandil />
+        <BlokchainTandil text="Blockchain Tandil" />
         <Clock />
         <Location />
         <Meetup />        

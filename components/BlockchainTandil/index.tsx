@@ -1,19 +1,50 @@
 import * as React from 'react'
 
-const BlokchainTandil: React.FunctionComponent<any> = () => (
-  <div>
-    <h1 className="text white skew">BLOCKCHAIN TANDIL</h1>
+type Props = {
+  text? : string;
+}
+
+const BlokchainTandil: React.FunctionComponent<Props> = ({ text = "Default" }) => (
+  <div className="container">
+    <h1>
+      <span className="main-text skew">{text}</span>
+      <span className="back-text glitch-up">{text}</span>
+    </h1>
 
     <style jsx>{`
-      .text {
-        font-size: 300%;
-        text-align: center;
-        font-family: 'Roboto Slab',serif;
+      .main-text {
+        position: relative;
+        display: inline-block;
+        opacity: .5;
+        color: #00FAFA;
       }
 
-      .white {
-        color: #FAFAFA;
+      .back-text {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        opacity: .8;
+        display: inline-block;
+      }
+
+      h1 {
+        font-family: 'Roboto Slab',serif;
+        font-weight: 500;
+        font-style: normal;
+        text-transform: uppercase;
+        font-size: 300%;
         position: relative;
+        margin: auto;
+        margin-top: 0px;
+      }
+
+      .container {
+        color: white;
+        width: 80%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .skew {
@@ -26,13 +57,13 @@ const BlokchainTandil: React.FunctionComponent<any> = () => (
 
       @keyframes skew {
         0% {
-          transform: skew(0deg);
+          transform: skew(-10deg);
         }
         20% {
           transform: skew(0deg);
         }
         24% {
-          transform: skew(-7deg);
+          transform: skew(-27deg);
         }
         28% {
           transform: skew(0deg);
@@ -41,13 +72,13 @@ const BlokchainTandil: React.FunctionComponent<any> = () => (
           transform: skew(0deg);
         }
         74%{
-          transform: skew(10deg);
+          transform: skew(27deg);
         }
         78% {
           transform: skew(0deg);
         }
         100% {
-          transform: skew(0deg);
+          transform: skew(10deg);
         }
       }
 
@@ -82,7 +113,7 @@ const BlokchainTandil: React.FunctionComponent<any> = () => (
         }
         74%{
           opacity: 0.3;
-          transform: translate3d(8px, -6px, 0);
+          transform: translate3d(10px, -6px, 0);
         }
         78% {
           opacity: 1;
