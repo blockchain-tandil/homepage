@@ -2,7 +2,7 @@ import * as React from 'react'
 import moment from 'moment';
 
 const Clock: React.FunctionComponent<any> = () => {
-  const timeLeft = moment("05/08/2019 18:00:00").fromNow()
+  const timeLeft = moment("06/05/2019 18:00:00").fromNow()
   return (
   <div>
       <h2>Next meeting {timeLeft}</h2>
