@@ -408,7 +408,7 @@
           <div class="g-mt-minus-200 g-mb-60">
             <!-- Google (Map) [custom] -->
             <div class="g-pos-rel g-height-500--md">
-              <div id="gMap" class="js-g-map g-pos-abs--md w-100 g-height-300 g-height-100x--md"
+              <div id="mapid" class="js-g-map g-pos-abs--md w-100 g-height-300 g-height-100x--md"
                    data-type="custom"
                    data-lat="-37.326"
                    data-lng="-59.134"
@@ -485,7 +485,7 @@
     <script src="assets/vendor/jquery.countdown.min.js"></script>
     <script src="assets/vendor/fancybox/jquery.fancybox.js"></script>
     <script src="assets/vendor/slick-carousel/slick/slick.js"></script>
-    <script src="assets/vendor/gmaps/gmaps.min.js"></script>
+    <!-- <script src="assets/vendor/gmaps/gmaps.min.js"></script> -->
 
     <!-- JS Unify -->
     <script src="assets/js/hs.core.js"></script>
@@ -495,7 +495,7 @@
     <script src="assets/js/components/hs.tabs.js"></script>
     <script src="assets/js/components/hs.countdown.js"></script>
     <script src="assets/js/components/hs.carousel.js"></script>
-    <script src="assets/js/components/gmap/hs.map.js"></script>
+    <!-- <script src="assets/js/components/gmap/hs.map.js"></script> -->
     <script src="assets/js/components/hs.go-to.js"></script>
 
     <!-- JS Customization -->
@@ -503,11 +503,7 @@
 
     <!-- JS Plugins Init. -->
     <script>
-      // initialization of google map
-      function initMap() {
-        $.HSCore.components.HSGMap.init('.js-g-map');
-      }
-
+      
       $(document).on('ready', function () {
         // initialization of carousel
         $.HSCore.components.HSCarousel.init('.js-carousel');
@@ -556,6 +552,22 @@
       });
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaVwMDHQQec3OC2hYEH_QVm0e9rii3FlA&callback=initMap" async></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""></script>
+    <script>
+      var mymap = L.map('mapid').setView([-37.3261379,-59.13689], 15);
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 19,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoibWF0aW9zIiwiYSI6ImNrMTJuYmJkNzAwaWIzb28zZWFheDY2bXkifQ.mHhgI6G7U5IDlpsTBS2O_w'
+      }).addTo(mymap);
+      var marker = L.marker([-37.3261379,-59.13689]).addTo(mymap);
+    </script>
+
   </body>
 </html>
